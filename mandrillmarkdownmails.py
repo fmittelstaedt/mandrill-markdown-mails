@@ -4,14 +4,13 @@
 # Mandrill Markdown Mails
 # Author: Frédérique Mittelstaedt 2014
 # License: MIT
-# Requires the python modules BeautifulSoup, markdown and mandrill
+# Requires the python modules pypandoc (and installed pandoc) and mandrill
 
-from BeautifulSoup import BeautifulSoup
-import markdown
 import mandrill
+import pypandoc
 
 # Paste your Mandrill API key here
-API_KEY = 'f7pVy_5pVHFabHFgdyj9Dw'
+API_KEY = ''
 
 # Sending mails via Mandrill
 # Note: Currently sends a mail to the sender in BCC - adapt to your needs
@@ -39,12 +38,12 @@ def sendMandrillMail(template_name, sender, recipients, subject, variables):
 		)
 	mandrill_client.messages.send_template(template_name, [], message, async=True)
 
-# Send mail providing the 
+# Send mail providing the template and dict with information
 # Note: Convention for variables: VARIABLENAME_html and VARIABLENAME_txt for html and txt mails respectively - adapt to your needs
 def sendMandrillMarkdownMail(template, dict):
 	variables = {}
 	for (k, v) in dict["variables"].iteritems():
-		variables[k+"_html"] = markdown.markdown(v);
-		variables[k+"_txt"] = ''.join(BeautifulSoup(variables[k+"_html"]).findAll(text=True))
+		variables[k+"_html"] = pypandoc.convert(v, "html", format='md')
+		variables[k+"_txt"] = pypandoc.convert(v, "plain", format='md')
 
 	sendMandrillMail(template, dict["sender"], dict["recipients"], dict["subject"], variables)
