@@ -41,7 +41,7 @@ def sendMandrillMail(template_name, sender, recipients, subject, variables):
 
 # Send mail providing the 
 # Note: Convention for variables: VARIABLENAME_html and VARIABLENAME_txt for html and txt mails respectively - adapt to your needs
-def sendMarkdownMandrillMail(template, dict):
+def sendMandrillMarkdownMail(template, dict):
 	variables = {}
 	for (k, v) in dict["variables"].iteritems():
 		variables[k+"_html"] = markdown.markdown(v);
