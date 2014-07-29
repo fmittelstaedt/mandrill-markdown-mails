@@ -6,7 +6,7 @@
 # License: MIT
 # Requires the python modules BeautifulSoup, markdown and mandrill
 
-import markdownmandrillmails
+from markdownmandrillmails import sendMarkdownMandrillMail
 
 # Example
 # John Doe <john.doe@invalid.com> sends a mail using his Mandrill template "mandrill-template" to Jane Doe<jane.doe@invalid.com>.
@@ -25,9 +25,9 @@ dict = {
 		}
 	],
 	"subject": 'The subject',
-	"variables": [
+	"variables": {
 		"message": "The message content in *Markdown*!"
-	]
+	}
 }
 
 sendMarkdownMandrillMail("mandrill-template", dict)
