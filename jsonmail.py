@@ -10,7 +10,7 @@
 
 import sys
 import json
-from markdownmandrillmails import sendMarkdownMandrillMail
+from mandrillmarkdownmails import sendMarkdownMandrillMail
 
 # Script for sending an email on Mandrill with the template and a JSON containing the information provided as a command line parameters
 # First parameter: template
@@ -23,4 +23,4 @@ if (len(sys.argv) != 3):
 template = sys.argv[1]
 dict = json.loads(sys.argv[2])
 
-sendMarkdownMandrillMail(template, dict)
+sendMandrillMarkdownMail(template, dict)
