@@ -4,7 +4,7 @@
 # Mandrill Markdown Mails
 # Author: Frédérique Mittelstaedt 2014
 # License: MIT
-# Requires the python modules BeautifulSoup, markdown and mandrill
+# Requires the python modules pypandoc (and installed Pandoc) and mandrill
 
 from mandrillmarkdownmails import sendMandrillMarkdownMail
 
