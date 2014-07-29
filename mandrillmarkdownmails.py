@@ -11,12 +11,12 @@ import markdown
 import mandrill
 
 # Paste your Mandrill API key here
-API_KEY = ''
+API_KEY = 'f7pVy_5pVHFabHFgdyj9Dw'
 
 # Sending mails via Mandrill
 # Note: Currently sends a mail to the sender in BCC - adapt to your needs
 def sendMandrillMail(template_name, sender, recipients, subject, variables):
-    mandrill_client = mandrill.Mandrill(API_KEY)
+	mandrill_client = mandrill.Mandrill(API_KEY)
 	message = {
 		'from_email': sender["email"],
 		'from_name': sender["name"],
@@ -42,10 +42,9 @@ def sendMandrillMail(template_name, sender, recipients, subject, variables):
 # Send mail providing the 
 # Note: Convention for variables: VARIABLENAME_html and VARIABLENAME_txt for html and txt mails respectively - adapt to your needs
 def sendMarkdownMandrillMail(template, dict):
-	variables = []
-	for (k, v) in dict["variables"]) {
+	variables = {}
+	for (k, v) in dict["variables"].iteritems():
 		variables[k+"_html"] = markdown.markdown(v);
 		variables[k+"_txt"] = ''.join(BeautifulSoup(variables[k+"_html"]).findAll(text=True))
-	}
 
 	sendMandrillMail(template, dict["sender"], dict["recipients"], dict["subject"], variables)
