@@ -44,6 +44,10 @@ def sendMandrillMarkdownMail(template, dict):
 	variables = {}
 	for (k, v) in dict["variables"].iteritems():
 		variables[k+"_html"] = pypandoc.convert(v, "html", format='md')
+		
+		for (elem, style) in dict["styles"].iteritems():
+			variables[k+"_html"] = variables[k+"_html"].replace("<"+elem+">", "<"+elem+" style=\""+style+"\">");
+
 		variables[k+"_txt"] = pypandoc.convert(v, "plain", format='md')
 
 	sendMandrillMail(template, dict["sender"], dict["recipients"], dict["subject"], variables)
