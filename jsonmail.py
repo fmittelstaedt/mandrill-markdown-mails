@@ -10,7 +10,7 @@
 
 import sys
 import json
-from mandrillmarkdownmails import sendMarkdownMandrillMail
+from mandrillmarkdownmails import sendMandrillMarkdownMail
 
 # Script for sending an email on Mandrill with the template and a JSON containing the information provided as a command line parameters
 # First parameter: template
