@@ -27,6 +27,9 @@ dict = {
 	"subject": 'The subject',
 	"variables": {
 		"message": "The message content in *Markdown*!"
+	},
+	"styles": {
+		"p": "font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-weight: 400; line-height: 1.5; font-size: 1.0em; margin: 0; padding-top: 0; padding-bottom: 0.75em;",
 	}
 }
 
